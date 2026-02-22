@@ -1,6 +1,6 @@
 {
   "name": "health-probes",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Kubernetes-style health check probes for Node.js — framework-agnostic /livez, /readyz, /startupz, and /healthz endpoints",
   "license": "MIT",
   "author": "smnbbrv",
