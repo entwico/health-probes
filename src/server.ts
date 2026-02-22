@@ -18,7 +18,7 @@ export class HealthServer {
       return;
     }
 
-    const host = options.host ?? 'localhost';
+    const host = options.host ?? '127.0.0.1';
     const port = options.port ?? 9090;
     const paths = { ...K8sPaths, ...options.paths };
 

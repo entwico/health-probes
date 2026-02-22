@@ -14,7 +14,7 @@ export interface ProbePaths {
 export interface HealthServerOptions {
   /**
    * Host to bind the health server to.
-   * @default 'localhost'
+   * @default '127.0.0.1'
    */
   host?: string | undefined;
 

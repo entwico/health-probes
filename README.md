@@ -14,7 +14,9 @@ npm install health-probes
 import { checks, probes, server } from 'health-probes';
 
 // start health server on a separate port
-server.start({ port: 9090 });
+// default host is '127.0.0.1' for security reasons
+// use host: '0.0.0.0' in k8s containers so the kubelet can reach the probes
+server.start({ host: '0.0.0.0', port: 9090 });
 
 // enable liveness immediately
 probes.live.enable();
@@ -102,6 +104,7 @@ Returns detailed JSON status of all probes and health checks. Useful for debuggi
 ```
 
 Status values:
+
 - `healthy` — all checks pass
 - `degraded` — optional checks failing, required checks pass
 - `unhealthy` — required checks failing
@@ -134,6 +137,7 @@ checks.register({
 ```
 
 The check function can either:
+
 - Return `HealthCheckResult` with status and optional error
 - Return `void` (completing without error = healthy)
 - Throw an error (= unhealthy with error message)
@@ -156,7 +160,7 @@ unregister();
 
 ```ts
 server.start({
-  host: '0.0.0.0', // default: 'localhost'
+  host: '0.0.0.0', // default: '127.0.0.1'
   port: 9090, // default: 9090
 });
 ```
@@ -182,10 +186,10 @@ server.start({
 
 Built-in path presets:
 
-| Preset | live | startup | ready | health |
-|---|---|---|---|---|
+| Preset               | live     | startup     | ready     | health     |
+| -------------------- | -------- | ----------- | --------- | ---------- |
 | `K8sPaths` (default) | `/livez` | `/startupz` | `/readyz` | `/healthz` |
-| `SimplePaths` | `/live` | `/startup` | `/ready` | `/health` |
+| `SimplePaths`        | `/live`  | `/startup`  | `/ready`  | `/health`  |
 
 ## Kubernetes Configuration
 
@@ -269,7 +273,7 @@ interface ProbePaths {
 }
 
 interface HealthServerOptions {
-  host?: string; // default: 'localhost'
+  host?: string; // default: '127.0.0.1'
   port?: number; // default: 9090
   paths?: ProbePaths; // default: K8sPaths
 }

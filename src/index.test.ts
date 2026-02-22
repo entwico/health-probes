@@ -4,7 +4,7 @@ import { afterEach, describe, it } from 'node:test';
 
 import { HealthChecks, HealthProbes, HealthServer } from './index.js';
 
-function waitForPort(port: number, host = 'localhost'): Promise<void> {
+function waitForPort(port: number, host = '127.0.0.1'): Promise<void> {
   return new Promise((resolve) => {
     const retry = () => {
       const socket = connect(port, host);
