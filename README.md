@@ -165,6 +165,15 @@ server.start({
 });
 ```
 
+Resolution order: **explicit option > environment variable > default**.
+
+| Setting | Env Variable    | Default       |
+| ------- | --------------- | ------------- |
+| host    | `HEALTH_HOST`   | `127.0.0.1`   |
+| port    | `HEALTH_PORT`   | `9090`        |
+
+This means `server.start()` with no arguments will pick up `HEALTH_HOST` / `HEALTH_PORT` from the environment if set.
+
 ### Custom Paths
 
 By default, endpoints use Kubernetes-style paths (`/livez`, `/readyz`, `/startupz`, `/healthz`). You can customize them:
@@ -273,8 +282,8 @@ interface ProbePaths {
 }
 
 interface HealthServerOptions {
-  host?: string; // default: '127.0.0.1'
-  port?: number; // default: 9090
+  host?: string; // env: HEALTH_HOST, default: '127.0.0.1'
+  port?: number; // env: HEALTH_PORT, default: 9090
   paths?: ProbePaths; // default: K8sPaths
 }
 

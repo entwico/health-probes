@@ -255,4 +255,28 @@ describe('HealthServer', () => {
     hs.start({ port: 19092 });
     await waitForPort(19092);
   });
+
+  it('should use HEALTH_PORT env var when no port option is given', async () => {
+    process.env['HEALTH_PORT'] = '19093';
+    hs = new HealthServer();
+
+    try {
+      hs.start();
+      await waitForPort(19093);
+    } finally {
+      delete process.env['HEALTH_PORT'];
+    }
+  });
+
+  it('should prefer explicit port over HEALTH_PORT env var', async () => {
+    process.env['HEALTH_PORT'] = '19099';
+    hs = new HealthServer();
+
+    try {
+      hs.start({ port: 19094 });
+      await waitForPort(19094);
+    } finally {
+      delete process.env['HEALTH_PORT'];
+    }
+  });
 });

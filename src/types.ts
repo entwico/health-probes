@@ -14,12 +14,14 @@ export interface ProbePaths {
 export interface HealthServerOptions {
   /**
    * Host to bind the health server to.
+   * Falls back to `HEALTH_HOST` env var, then `'127.0.0.1'`.
    * @default '127.0.0.1'
    */
   host?: string | undefined;
 
   /**
    * Port to bind the health server to.
+   * Falls back to `HEALTH_PORT` env var, then `9090`.
    * @default 9090
    */
   port?: number | undefined;

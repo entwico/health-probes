@@ -18,8 +18,8 @@ export class HealthServer {
       return;
     }
 
-    const host = options.host ?? '127.0.0.1';
-    const port = options.port ?? 9090;
+    const host = options.host ?? process.env['HEALTH_HOST'] ?? '127.0.0.1';
+    const port = options.port ?? (process.env['HEALTH_PORT'] ? Number(process.env['HEALTH_PORT']) : 9090);
     const paths = { ...K8sPaths, ...options.paths };
 
     const instance = createServer(async (req, res) => {
