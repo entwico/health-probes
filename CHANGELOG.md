@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/smnbbrv/health-probes/compare/v1.0.0...v1.1.0) (2026-02-24)
+
+
+### Features
+
+* support HEALTH_HOST and HEALTH_PORT env variables ([d49811f](https://github.com/smnbbrv/health-probes/commit/d49811f39894ddd6176d3008131a405f7c2911b5))
+
 # 1.0.0 (2026-02-22)
 
 
