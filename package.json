@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Kubernetes-style health check probes for Node.js — framework-agnostic /livez, /readyz, /startupz, and /healthz endpoints",
   "license": "MIT",
-  "author": "smnbbrv",
+  "author": "admin@entwico.com",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -33,12 +33,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/smnbbrv/health-probes.git"
+    "url": "https://github.com/entwico/health-probes"
   },
-  "bugs": {
-    "url": "https://github.com/smnbbrv/health-probes/issues"
-  },
-  "homepage": "https://github.com/smnbbrv/health-probes#readme",
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "clean": "rm -rf dist",
